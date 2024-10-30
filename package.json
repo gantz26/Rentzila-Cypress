@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run:headless": "cypress run --browser chrome --headless",
+    "cy:run:headed": "cypress run --browser chrome --headed",
+    "cy:run:headed:create_unit_api": "cypress run --browser chrome --headed --spec cypress/e2e/create_unit_api.cy.ts",
+    "cy:run:headless:create_unit_api": "cypress run --browser chrome --headless --spec cypress/e2e/create_unit_api.cy.ts",
+    "allure:generate": "allure generate --clean",
+    "allure:open": "allure open"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "@types/cypress": "^1.1.6",
+    "@types/node": "^22.7.9",
+    "allure-commandline": "^2.31.0",
+    "allure-cypress": "^3.0.5",
+    "cypress": "^13.15.0",
+    "cypress-file-upload": "^5.0.8",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.6.3"
+  }
+}

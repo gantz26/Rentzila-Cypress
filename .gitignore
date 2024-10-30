@@ -1,0 +1,6 @@
+allure-report
+allure-results
+.env
+cypress/downloads
+cypress/screenshots
+node_modules
