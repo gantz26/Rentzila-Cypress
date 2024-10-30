@@ -1,0 +1,1 @@
+{"c55f3350d1d5f355a2b26457494a1c04:d41d8cd98f00b204e9800998ecf8427e":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"481e54f731c35bce","reportUrl":"https://gantz26.github.io/Rentzila-Cypress/1//#testresult/481e54f731c35bce","status":"passed","time":{"start":1730310628009,"stop":1730310642708,"duration":14699}}]}}
