@@ -4,7 +4,7 @@ class ProfilePage {
     }
 
     get categoriesWrapper() {
-        return cy.get("[class*=\"LeftSideOwnCabinet_categoriesWrapper\"]");
+        return cy.get('[class*="LeftSideOwnCabinet_categoriesWrapper"]');
     }
 
     get categoryVariants() {
@@ -12,25 +12,29 @@ class ProfilePage {
     }
 
     get myAnnouncementsVariant() {
-        return this.categoryVariants.contains("Мої оголошення").parent("[data-testid=\"variant\"]");
+        return this.categoryVariants.contains("Мої оголошення").parent('[data-testid="variant"]');
     }
 
     get myAnnouncementsTitle() {
-        return cy.get("[class*=\"OwnerUnitsPage_title\"]");
+        return cy.get('[class*="OwnerUnitsPage_title"]');
     }
 
     get tabs() {
-        return cy.get("[role=\"tablist\"]").find("[role=\"tab\"]");
+        return cy.get('[role="tablist"]').find('[role="tab"]');
     }
 
     get unitListWrapper() {
-        return cy.get("[class*=\"OwnerCabinetUnitsList_wrapper\"]");
+        return cy.get('[class*="OwnerCabinetUnitsList_wrapper"]');
     }
 
     getUnitCard(name: string) {
         return cy.getByTestId("unitCard").filter((index, element) => {
             return element.innerText.includes(name);
         })
+    }
+
+    getUnitEditButton(unit: Cypress.Chainable) {
+        return unit.contains("Редагувати");
     }
 
     isOpen() {
@@ -41,6 +45,10 @@ class ProfilePage {
         this.tabs.then((tabs) => {
             cy.wrap(tabs[index]).click();
         });
+    }
+
+    clickEditButton(unit: Cypress.Chainable) {
+        this.getUnitEditButton(unit).click();
     }
 
     checkTabs(tabIndex: number) {

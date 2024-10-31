@@ -12,7 +12,7 @@ class MainPage {
     }
 
     get addAnnouncementButton() {
-        return cy.get("[href=\"/create-unit/\"]");
+        return cy.get('[href="/create-unit/"]');
     }
 
     get telegramPopup() {
@@ -20,15 +20,15 @@ class MainPage {
     }
 
     get telegramPopupCloseButton() {
-        return this.telegramPopup.find("[data-testid=\"crossIcon\"]");
+        return this.telegramPopup.find('[data-testid="crossIcon"]');
     }
 
     get profileContainer() {
-        return cy.get("[class*=\"ProfileDropdownMenu_container\"]");
+        return cy.get('[class*="ProfileDropdownMenu_container"]');
     }
 
     get profileUnitsItem() {
-        return this.profileContainer.find("[data-testid=\"units\"]");
+        return this.profileContainer.find('[data-testid="units"]');
     }
 
     clickLoginButton() {

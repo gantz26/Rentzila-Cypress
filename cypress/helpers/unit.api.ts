@@ -2,7 +2,6 @@ import { getUnitsEndpoint, getModerateUnitEndpoint, getUnitIdEndpoint } from "./
 
 class UnitAPI {
     createUnit(name: string, minimal_price: number) {
-        cy.log(getUnitsEndpoint());
         return cy.get("@userAccessToken").then((token) => {
             return cy.request({
                 method: "POST",

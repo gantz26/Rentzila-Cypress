@@ -12,7 +12,7 @@ class LoginPage {
     }
 
     get loginbutton() {
-        return this.loginContainer.find("[type=\"submit\"]");
+        return this.loginContainer.find('[type="submit"]');
     }
 
     typeEmailInput(text: string) {

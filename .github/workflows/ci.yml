@@ -23,6 +23,7 @@ jobs:
           echo USER_EMAIL=${{ secrets.USER_EMAIL }} >> .env
           echo USER_PASSWORD=${{ secrets.USER_PASSWORD }} >> .env
           echo BASE_URL=${{ secrets.BASE_URL }} >> .env
+          echo API_BASE_URL=${{ secrets.API_BASE_URL }} >> .env
 
       - name: Run tests
         uses: cypress-io/github-action@v6
