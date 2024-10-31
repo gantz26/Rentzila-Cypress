@@ -39,7 +39,7 @@ class MainPage {
         this.avatarBlock.click();
     }
 
-    clikcProfileUnitsItem() {
+    clickProfileUnitsItem() {
         this.profileUnitsItem.click();
     }
 

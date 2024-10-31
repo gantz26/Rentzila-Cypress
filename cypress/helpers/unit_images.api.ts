@@ -1,3 +1,5 @@
+import { getUnitImageEndpoint } from "./api";
+
 class UnitImagesAPI {
     uploadUnitIamge(id: number, filePath: string, isMain: boolean) {
         return cy.get("@userAccessToken").then((token) => {
@@ -10,7 +12,7 @@ class UnitImagesAPI {
 
                 return cy.request({
                     method: "POST",
-                    url: `https://dev.rentzila.com.ua/api/unit-images/`,
+                    url: getUnitImageEndpoint(),
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },

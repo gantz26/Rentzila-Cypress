@@ -1,9 +1,12 @@
+import { getUnitsEndpoint, getModerateUnitEndpoint, getUnitIdEndpoint } from "./api";
+
 class UnitAPI {
     createUnit(name: string, minimal_price: number) {
+        cy.log(getUnitsEndpoint());
         return cy.get("@userAccessToken").then((token) => {
             return cy.request({
                 method: "POST",
-                url: "https://dev.rentzila.com.ua/api/units/",
+                url: getUnitsEndpoint(),
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -41,7 +44,7 @@ class UnitAPI {
         return cy.get("@adminAccessToken").then((token) => {
             return cy.request({
                 method: "PATCH",
-                url: `https://dev.rentzila.com.ua/api/crm/units/${id}/moderate/`,
+                url: getModerateUnitEndpoint(id),
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -62,7 +65,7 @@ class UnitAPI {
         return cy.get("@userAccessToken").then((token) => {
             return cy.request({
                 method: "DELETE",
-                url: `https://dev.rentzila.com.ua/api/units/${id}/`,
+                url: getUnitIdEndpoint(id),
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

@@ -11,6 +11,7 @@ export default defineConfig({
       ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
       USER_EMAIL: process.env.USER_EMAIL,
       USER_PASSWORD: process.env.USER_PASSWORD,
+      API_BASE_URL: process.env.API_BASE_URL
     },
     setupNodeEvents(on, config) {
       allureCypress(on, config, {

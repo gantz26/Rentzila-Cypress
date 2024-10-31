@@ -4,23 +4,22 @@ import profilePage from "../pages/profile.page";
 import unitApi from "../helpers/unit.api";
 import unitImagesApi from "../helpers/unit_images.api";
 import authApi from "../helpers/auth.api";
-import { faker } from '@faker-js/faker';
+import fakerHelper from "../helpers/faker_helper";
 
 describe("API tests", () => {
     it("Create API request for \"Create Unit\"", () => {
-        cy.wrap("-1").as("adminAccessToken");
         cy.wrap("-1").as("userAccessToken");
-        authApi.createUserAccessToken();
+        authApi.createAccessToken();
         
         mainPage.open();
         mainPage.closeTelegramPopup();
         mainPage.telegramPopup.should("not.exist");
 
-        cy.wrap(faker.word.noun({ length: { min: 10, max: 20} })).as("unitName").then(unitName => {
-            unitApi.createUnit(unitName, faker.number.int({ min: 1000, max: 1000000 })).then((response) => {
-                expect(response).to.have.property("status", 201);
-                cy.wrap(response.body.id).as("unitId");
-            });
+        const unitName = fakerHelper.getRandomUnitName();
+        const unitPrice = fakerHelper.getRandomUnitPrice();
+        unitApi.createUnit(unitName, unitPrice).then((response) => {
+            expect(response).to.have.property("status", 201);
+            cy.wrap(response.body.id).as("unitId");
         });
 
         cy.get("@unitId").then((id) => {
@@ -45,7 +44,7 @@ describe("API tests", () => {
         mainPage.clickAvatarBlock();
         mainPage.profileContainer.should("be.visible");
         mainPage.profileUnitsItem.should("be.visible");
-        mainPage.clikcProfileUnitsItem();
+        mainPage.clickProfileUnitsItem();
 
         profilePage.isOpen();
         profilePage.categoriesWrapper.should("be.visible");
@@ -58,18 +57,16 @@ describe("API tests", () => {
         profilePage.checkTabs(2);
         profilePage.unitListWrapper.should("be.visible");
         
-        cy.get("@unitName").then(unitName => {
-            profilePage.getUnitCard(String(unitName)).then((element) => {
-                cy.wrap(element).should("be.visible");
-                cy.get("@unitId").then((id) => {
-                    unitApi.deleteUnit(Number(id)).then((response) => {
-                        expect(response).to.have.property("status", 204);
-                    });
+        profilePage.getUnitCard(unitName).then((element) => {
+            cy.wrap(element).should("be.visible");
+            cy.get("@unitId").then((id) => {
+                unitApi.deleteUnit(Number(id)).then((response) => {
+                    expect(response).to.have.property("status", 204);
                 });
-                cy.reload();
-                profilePage.emptyBlocktitle.should("be.visible");
-                profilePage.emptyBlocktitle.should("have.text", "На жаль, у Вас поки немає поданих оголошень");
             });
+            cy.reload();
+            profilePage.emptyBlocktitle.should("be.visible");
+            profilePage.emptyBlocktitle.should("have.text", "На жаль, у Вас поки немає поданих оголошень");
         });
     });
 });
