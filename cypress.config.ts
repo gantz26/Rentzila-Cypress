@@ -22,5 +22,7 @@ export default defineConfig({
     baseUrl: process.env.BASE_URL,
     viewportWidth: 1920,
     viewportHeight: 1080,
+    scrollBehavior: "nearest",
+    defaultCommandTimeout: 10000
   },
 })

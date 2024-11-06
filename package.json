@@ -5,6 +5,8 @@
     "cy:run:headed": "cypress run --browser chrome --headed",
     "cy:run:headed:create_unit_api": "cypress run --browser chrome --headed --spec cypress/e2e/create_unit_api.cy.ts",
     "cy:run:headless:create_unit_api": "cypress run --browser chrome --headless --spec cypress/e2e/create_unit_api.cy.ts",
+    "cy:run:headed:edit_unit": "cypress run --browser chrome --headed --spec cypress/e2e/edit_unit.cy.ts",
+    "cy:run:headless:edit_unit": "cypress run --browser chrome --headless --spec cypress/e2e/edit_unit.cy.ts",
     "allure:generate": "allure generate --clean",
     "allure:open": "allure open"
   },

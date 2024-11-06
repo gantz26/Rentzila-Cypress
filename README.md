@@ -29,6 +29,7 @@ USER_EMAIL=<your_email>
 USER_PASSWORD=<your_password>
 
 BASE_URL=<base_url>
+API_BASE_URL=<api_base_url>
 ```
 
 4. To run all the tests, use one of the next commands:
@@ -41,6 +42,8 @@ npm run cy:run:headed
 ```
 npm run cy:run:headed:create_unit_api
 npm run cy:run:headless:create_unit_api
+npm run cy:run:headed:edit_unit 
+npm run cy:run:headless:edit_unit
 ```
 
 6. To generate and open a report:
