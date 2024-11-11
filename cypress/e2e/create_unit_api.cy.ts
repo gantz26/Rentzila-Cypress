@@ -15,8 +15,8 @@ describe("API tests", () => {
         mainPage.closeTelegramPopup();
         mainPage.telegramPopup.should("not.exist");
 
-        const unitName = fakerHelper.getRandomUnitName();
-        const unitPrice = fakerHelper.getRandomUnitPrice();
+        const unitName = fakerHelper.getRandomName();
+        const unitPrice = fakerHelper.getRandomNumber();
         unitApi.createUnit(unitName, unitPrice).then((response) => {
             expect(response).to.have.property("status", 201);
             cy.wrap(response.body.id).as("unitId");

@@ -3,6 +3,19 @@ class MainPage {
         cy.visit("/");
     }
 
+    isOpen() {
+        cy.window().its("document.readyState").should("eq", "complete");
+        this.mainSectionTitle.should("be.visible");
+    }
+
+    get gear() {
+        return cy.getByTestId("superuserIcon_Navbar");
+    }
+
+    get mainSectionTitle() {
+        return cy.get('[class*="HeroSection_title"]');
+    }
+
     get loginButton() {
         return cy.contains("Вхід");
     }
@@ -31,11 +44,16 @@ class MainPage {
         return this.profileContainer.find('[data-testid="units"]');
     }
 
+    get logoutButton() {
+        return this.profileContainer.find('[data-testid="logout"]');
+    }
+
     clickLoginButton() {
         this.loginButton.click();
     }
 
     clickAvatarBlock() {
+        this.avatarBlock.should("be.visible");
         this.avatarBlock.click();
     }
 
@@ -43,8 +61,18 @@ class MainPage {
         this.profileUnitsItem.click();
     }
 
+    clickLogoutButton() {
+        this.logoutButton.should("be.visible");
+        this.logoutButton.click();
+    }
+
     clickAddAnnouncementButton() {
         this.addAnnouncementButton.click();
+    }
+
+    clickGear() {
+        this.gear.should("be.visible");
+        this.gear.click();
     }
 
     closeTelegramPopup() {
